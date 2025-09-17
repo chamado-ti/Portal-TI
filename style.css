@@ -1,78 +1,48 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f5f5f5;
-}
+/* ===== Reset ===== */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Inter', sans-serif; background: linear-gradient(160deg, #1a1a2e, #162447, #1f4068); color: #e0e0e0; padding: 20px; }
 
-header {
-  background: #333;
-  color: #fff;
-  padding: 10px 20px;
-}
+/* ===== Header ===== */
+header { margin-bottom: 30px; }
+.header-container { display:flex; align-items:center; gap:20px; }
+.logo { width:80px; border-radius:12px; }
+header h1 { font-size:2.5rem; font-weight:700; color:#fff; }
 
-.header-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+/* ===== Filtros ===== */
+#filtros { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:40px; }
+select { padding:12px 20px; border-radius:12px; border:none; background-color:#2e2e3e; color:#fff; font-size:1rem; cursor:pointer; transition:all 0.3s ease; }
+select:hover { background-color:#44445a; }
 
-.logo {
-  height: 40px;
-}
+/* ===== Grid de cards ===== */
+#cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:35px; justify-items:center; }
 
-#filtros {
-  display: flex;
-  gap: 10px;
-  padding: 10px 20px;
-  background: #eee;
-}
+/* ===== Cards Premium ===== */
+.card { width:320px; border-radius:30px; padding:30px 20px; text-align:center; backdrop-filter:blur(18px); background: rgba(30,30,50,0.2); border:1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 50px rgba(0,0,0,0.3); overflow:hidden; position:relative; transform:translateY(20px); opacity:0; animation: cardEntrada 0.6s forwards; transition:transform 0.5s, box-shadow 0.5s, background 0.5s; }
+.card::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background: radial-gradient(circle, rgba(255,255,255,0.03) 1%, transparent 1%) repeat; background-size:18px 18px; animation: moveParticles 20s linear infinite; pointer-events:none; }
+.card:hover { transform:translateY(-15px) scale(1.08) rotateZ(-1deg); box-shadow: 0 25px 60px rgba(0,0,0,0.35), 0 0 25px rgba(150,50,200,0.15) inset; background: rgba(40,40,60,0.25); }
 
-.card {
-  background: #fff;
-  padding: 15px;
-  margin: 10px;
-  border-radius: 8px;
-  display: inline-block;
-  width: 200px;
-  vertical-align: top;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
+/* ===== Imagem ===== */
+.card img { width:170px; height:170px; border-radius:50%; object-fit:cover; margin-bottom:20px; border:3px solid rgba(180,120,220,0.4); box-shadow: 0 12px 28px rgba(0,0,0,0.35), 0 0 12px rgba(180,120,220,0.2) inset; transition: transform 0.4s, box-shadow 0.4s; cursor:pointer; }
+.card img:hover { transform:scale(1.12) rotate(2deg); }
 
-.colaborador-img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
-  cursor: pointer;
-}
+/* ===== Texto ===== */
+.card h3 { font-size:1.75rem; margin-bottom:10px; font-weight:800; color:#e0e0e0; text-shadow:0 0 6px rgba(180,120,220,0.5); }
+.card p { font-size:1rem; margin:6px 0; font-weight:500; color:#cfcfe0; display:flex; flex-direction:column; gap:4px; text-shadow:0 0 4px rgba(180,120,220,0.25); }
 
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.8);
-}
+/* ===== Botão ===== */
+.card a, .card .dash-btn { display:inline-block; margin-top:16px; font-weight:700; color:#fff; text-decoration:none; padding:12px 22px; border-radius:25px; background: rgba(180,120,220,0.15); backdrop-filter: blur(10px); border:1px solid rgba(180,120,220,0.4); transition: all 0.4s ease; cursor:pointer; box-shadow: 0 0 6px rgba(180,120,220,0.25); }
+.card a:hover, .card .dash-btn:hover { color:#1a1a2e; background: rgba(180,120,220,0.85); border-color:#b478dc; transform: scale(1.06); box-shadow: 0 0 16px rgba(180,120,220,0.6); }
 
-.modal-content {
-  display: block;
-  margin: auto;
-  max-width: 90%;
-  max-height: 80%;
-}
+/* ===== Barra de progresso ===== */
+.card .progress-container { width:100%; height:12px; background: rgba(255,255,255,0.06); border-radius:12px; margin-top:16px; overflow:hidden; box-shadow: inset 0 2px 6px rgba(180,120,220,0.15); }
+.card .progress-bar { height:100%; width:0; background: linear-gradient(90deg, #b478dc, #6b3a9e); border-radius:12px; transition: width 0.6s ease; box-shadow:0 2px 6px rgba(180,120,220,0.3); }
 
-.close {
-  position: absolute;
-  top: 50px;
-  right: 35px;
-  color: #fff;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-}
+/* ===== Modal ===== */
+.modal { display:none; position:fixed; z-index:999; padding-top:80px; left:0; top:0; width:100%; height:100%; background-color: rgba(0,0,0,0.85); }
+.modal-content { margin:auto; display:block; max-width:80%; border-radius:20px; box-shadow:0 0 50px rgba(180,120,220,0.7); animation: zoomIn 0.3s; }
+.close { position:absolute; top:30px; right:40px; color:#fff; font-size:40px; font-weight:bold; cursor:pointer; }
+
+/* ===== Animações ===== */
+@keyframes cardEntrada { to { transform:translateY(0); opacity:1; } }
+@keyframes moveParticles { 0% { transform:translate(0,0); } 50% { transform:translate(25px,15px); } 100% { transform:translate(0,0); } }
+@keyframes zoomIn { from{transform:scale(0.7);} to{transform:scale(1);} }
