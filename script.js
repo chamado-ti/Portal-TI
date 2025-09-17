@@ -7,19 +7,18 @@ function mostrarCards(lista) {
   lista.forEach(colab => {
     const card = document.createElement('div');
     card.classList.add('card');
-
-    card.innerHTML = 
-      `<img src="${colab.foto}" alt="${colab.nome}" class="colaborador-img">
+    card.innerHTML = `
+      <img src="${colab.foto}" alt="${colab.nome}" class="colaborador-img">
       <h3>${colab.nome}</h3>
       <p><strong>Setor:</strong> ${colab.setor}</p>
       <p><strong>Hardware:</strong> ${colab.hardware}</p>
       <p><strong>Chamados:</strong> ${calcularChamados(colab)}</p>
-      <a href="${colab.teams}" target="_blank">Falar no Teams</a>`;
-
+      <a href="${colab.teams}" target="_blank">Falar no Teams</a>
+    `;
     container.appendChild(card);
   });
 
-  setupModal(); // Atualiza modal das imagens
+  setupModal();
 }
 
 function calcularChamados(colab) {
@@ -33,19 +32,15 @@ function calcularChamados(colab) {
   }
 }
 
-// filtros
+// Filtros
 document.getElementById('filtroSetor')?.addEventListener('change', filtrar);
 document.getElementById('filtroMes')?.addEventListener('change', filtrar);
 document.getElementById('filtroAno')?.addEventListener('change', filtrar);
 
 function filtrar() {
   const setor = document.getElementById('filtroSetor').value;
-  const mes = document.getElementById('filtroMes').value;
-  const ano = document.getElementById('filtroAno')?.value || '2025';
-
   let filtrados = colaboradores;
   if (setor !== 'Todos') filtrados = filtrados.filter(c => c.setor === setor);
-
   mostrarCards(filtrados);
 }
 
