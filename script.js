@@ -8,14 +8,23 @@ function mostrarCards(lista) {
     const card = document.createElement('div');
     card.classList.add('card');
 
-    card.innerHTML = `
-      <img src="${colab.foto}" alt="${colab.nome}" class="colaborador-img">
+    const img = new Image();
+    img.src = colab.foto;
+    img.alt = colab.nome;
+    img.classList.add('colaborador-img');
+    img.onerror = () => img.src = "imagens/fallback.png"; // fallback real
+
+    card.appendChild(img);
+
+    const info = document.createElement('div');
+    info.innerHTML = `
       <h3>${colab.nome}</h3>
       <p><strong>Setor:</strong> ${colab.setor}</p>
       <p><strong>Hardware:</strong> ${colab.hardware}</p>
       <p><strong>Chamados:</strong> ${calcularChamados(colab)}</p>
       <a href="${colab.teams}" target="_blank">Falar no Teams</a>
     `;
+    card.appendChild(info);
 
     container.appendChild(card);
   });
