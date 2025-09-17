@@ -3,7 +3,7 @@ const colaboradores = [
     nome: "Matheus Nunes", 
     setor: "TI", 
     hardware: "INSPIRON 15 3565 RAM 8GB SSD 240GB", 
-    foto: "imagens/skype.jpeg", // confirme se existe na pasta
+    foto: "imagens/skype.jpeg" || "imagens/fallback.png", // fallback caso a imagem não exista
     teams: "",
     chamados: { 
       "2025": { Janeiro:0,Fevereiro:0,Março:0,Abril:0,Maio:0,Junho:0,Julho:0,Agosto:0,Setembro:0,Outubro:0,Novembro:0,Dezembro:0 },
@@ -23,4 +23,3 @@ const colaboradores = [
   },
   // outros colaboradores...
 ];
-
