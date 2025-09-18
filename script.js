@@ -5,13 +5,12 @@ function mostrarCards(lista) {
   container.innerHTML = '';
 
   lista.forEach(colab => {
-    if (!colab.nome) return; // ignora colaborador vazio
+    if (!colab.nome) return;
 
     const card = document.createElement('div');
     card.classList.add('card');
 
     card.innerHTML = `
-      <img src="${colab.foto}" alt="${colab.nome}" class="colaborador-img">
       <h3>${colab.nome}</h3>
       <p><strong>Setor:</strong> ${colab.setor}</p>
       <p><strong>Hardware:</strong> ${colab.hardware}</p>
@@ -21,22 +20,6 @@ function mostrarCards(lista) {
 
     container.appendChild(card);
   });
-
-  // modal para imagens
-  const modal = document.getElementById("modal");
-  const modalImg = document.getElementById("modal-img");
-  const imgs = document.querySelectorAll(".colaborador-img");
-  const closeBtn = document.querySelector(".close");
-
-  imgs.forEach(img => {
-    img.addEventListener("click", () => {
-      modal.style.display = "block";
-      modalImg.src = img.src;
-    });
-  });
-
-  closeBtn.onclick = () => modal.style.display = "none";
-  window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
 }
 
 function calcularChamados(colab) {
@@ -48,7 +31,6 @@ function calcularChamados(colab) {
   }
 }
 
-// filtros
 document.getElementById('filtroSetor').addEventListener('change', filtrar);
 document.getElementById('filtroMes').addEventListener('change', filtrar);
 document.getElementById('filtroAno').addEventListener('change', filtrar);
