@@ -5,7 +5,7 @@ function mostrarCards(lista) {
   container.innerHTML = '';
 
   lista.forEach(colab => {
-    if (!colab.nome) return; // ignora vazio
+    if (!colab.nome) return; // ignora colaborador vazio
 
     const card = document.createElement('div');
     card.classList.add('card');
@@ -41,7 +41,6 @@ function mostrarCards(lista) {
 
 function calcularChamados(colab) {
   const mesSelecionado = document.getElementById('filtroMes').value;
-  // hoje não tem dados por ano, mas já deixei preparado
   if (mesSelecionado === 'Todos') {
     return Object.values(colab.chamados).reduce((a, b) => a + b, 0);
   } else {
@@ -56,8 +55,6 @@ document.getElementById('filtroAno').addEventListener('change', filtrar);
 
 function filtrar() {
   const setor = document.getElementById('filtroSetor').value;
-  // const mes = document.getElementById('filtroMes').value; // já usado em calcularChamados
-  // const ano = document.getElementById('filtroAno').value; // reservado se quiser detalhar chamados por ano
 
   let filtrados = colaboradores;
   if (setor !== 'Todos') filtrados = filtrados.filter(c => c.setor === setor);
