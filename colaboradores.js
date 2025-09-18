@@ -1,5 +1,5 @@
 const colaboradores = [
-  { nome: "Matheus Nunes", setor: "TI", hardware: "", foto: "", teams: "", chamados: { Janeiro: 0, Fevereiro: 0 } },
+  { nome: "Matheus Nunes", setor: "TI", hardware: "", foto: "logo.esquadromil.branca.png", teams: "", chamados: { Janeiro: 0, Fevereiro: 0 } },
   { nome: "", setor: "", hardware: "", foto: "", teams: "", chamados: { Janeiro: 0, Fevereiro: 0 } },
   { nome: "", setor: "", hardware: "", foto: "", teams: "", chamados: { Janeiro: 0, Fevereiro: 0 } },
   { nome: "", setor: "", hardware: "", foto: "", teams: "", chamados: { Janeiro: 0, Fevereiro: 0 } },
@@ -30,4 +30,5 @@ const colaboradores = [
   { nome: "", setor: "", hardware: "", foto: "", teams: "", chamados: { Janeiro: 0, Fevereiro: 0 } },
   { nome: "", setor: "", hardware: "", foto: "", teams: "", chamados: { Janeiro: 0, Fevereiro: 0 } }
 ];
+
 
